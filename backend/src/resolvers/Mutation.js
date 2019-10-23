@@ -1,13 +1,14 @@
-const Mutations = {};
-
-module.exports = Mutations;
-const Mutation = {
-  createDog(db, args, ctx, info){
-    globalThis.dogs = global.dogs || [];
-    const newDog = { name: args.name };
-    global.dogs.push(newDog);
-    return newDog;
+const Mutations = {
+  async createItem(db, args, ctx, info) {
+  //  Authentication check
+  const item = await ctx.db.mutation.createItem(
+    {
+      data: {
+        ...args
+      }
+    }, info);
+    return item;
   }
 };
 
-module.exports = Mutation;
+module.exports = Mutations;
