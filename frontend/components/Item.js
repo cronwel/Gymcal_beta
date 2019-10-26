@@ -15,6 +15,9 @@ class Item extends Component {
   render() {
     const { item } = this.props;
       return <ItemStyles>
+
+        { item.image && <img src={item.image} alt={item.title}/> }
+        
         <Title>
           <Link href={{
             pathname: '/item',
