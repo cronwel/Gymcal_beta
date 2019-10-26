@@ -4,8 +4,8 @@ import gql from 'graphql-tag';
 import styled from 'styled-components';
 import Item from './Item';
 
-const ALL_ITEMS_QUERY = gql`
-  query ALL_ITEMS_QUERY {
+const QUERY_ALL_ITEMS = gql`
+  query QUERY_ALL_ITEMS {
     items {
       id
       title
@@ -37,7 +37,7 @@ class Items extends Component {
         <p>
           Items from items component
         </p>
-        <Query query={ALL_ITEMS_QUERY}>
+        <Query query={QUERY_ALL_ITEMS}>
           { ({ data, error, loading }) => {
             if (loading) return <p>Loading...</p>
             if (error) return <p> Error: { error.message }</p>
@@ -54,3 +54,5 @@ class Items extends Component {
 }
 
 export default Items;
+
+export { QUERY_ALL_ITEMS };
