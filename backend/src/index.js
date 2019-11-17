@@ -5,13 +5,9 @@ const db = require('./db');
 
 const server = createServer();
 
-
 // this is where you get access to other stuff in MIDDLEWARE
 
 server.express.use(cookieParser());
-
-
-
 
 server.start(
   {
