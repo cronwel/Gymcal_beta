@@ -1,13 +1,21 @@
 const cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
 require('dotenv').config({ path: 'variables.env' });
 const createServer = require('./createServer');
 const db = require('./db');
 
 const server = createServer();
 
-// this is where you get access to other stuff in MIDDLEWARE
-
 server.express.use(cookieParser());
+
+server.express.use((req, res, next) => {
+  const { token } = req.cookies;
+  if ( token ) {
+    const { userId } = jwt.verify( token , process.send.APP_SECRET );
+    req.userId = userId;
+  }
+  next();
+});
 
 server.start(
   {
@@ -17,6 +25,6 @@ server.start(
     },
   },
   deets => {
-    console.log(`Server is now running on port http:/localhost:${deets.port}`);
+    console.log(`Server is now running on port http:/localhost:${ deets.port }`);
   }
 );
