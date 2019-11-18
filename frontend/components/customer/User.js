@@ -2,14 +2,14 @@ import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import PropTypes from 'prop-types';
 
-QUERY_SIGNEDIN_USER = gql`
+const QUERY_SIGNEDIN_USER = gql`
   query QUERY_SIGNEDIN_USER{
     signedinuser {
       id
       email
       name
       permissions
-    }
+      }
   }
 `
 
@@ -19,7 +19,7 @@ const User = ( props ) => (
   </Query>
 );
 
-User.PropTypes = {
+User.propTypes = {
   children: PropTypes.func.isRequired,
 }
 

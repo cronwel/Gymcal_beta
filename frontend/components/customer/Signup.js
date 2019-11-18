@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import Form from '../styles/Form';
-<<<<<<< HEAD
 import DisplayError from '../ErrorMessage';
 
 const MUTATION_SIGNUP = gql`
@@ -32,7 +31,7 @@ state = {
 }
 
 saveToState = (e) => {
-    this.setState( { [ e.target.name ]: e.target.value } )
+    this.setState( { [ e.target.name ]: e.target.value } );
 }
   render() {
     return (
@@ -92,33 +91,6 @@ saveToState = (e) => {
       </Mutation>
     )
   }
-=======
-// import Error from '../styles/ErrorMessage';
-
-
-
-class Signup extends Component {
-    render() {
-        return <Form>
-            <fieldset>
-                <h2>
-                    Sign up for an account
-                </h2>
-                <label htmlFor="email">
-                    email
-                </label>
-                <label htmlFor="name">
-                    name
-                </label>
-                <label htmlFor="password">
-                    password
-                </label>
-
-
-            </fieldset>
-        </Form>
-    }
->>>>>>> 19225f52a26f3518ef74f63235944b43b27154e4
 }
 
 export default Signup;

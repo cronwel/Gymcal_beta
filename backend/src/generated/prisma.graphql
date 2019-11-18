@@ -1,5 +1,5 @@
 # source: https://us1.prisma.sh/cronwel-noel-irias-1f1e2a/backend/dev
-# timestamp: Sat Nov 16 2019 19:48:26 GMT-0600 (Central Standard Time)
+# timestamp: Sun Nov 17 2019 22:38:19 GMT-0600 (Central Standard Time)
 
 type AggregateItem {
   count: Int!
@@ -808,4 +808,5 @@ input UserWhereInput {
 
 input UserWhereUniqueInput {
   id: ID
+  email: String
 }
