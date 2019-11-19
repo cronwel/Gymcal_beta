@@ -1,5 +1,10 @@
 # import * from './generated/prisma.graphql';
 
+type SuccessMessage {
+message: String
+}
+
+
 type Mutation {
   createItem( title: String,
               description: String,
@@ -24,6 +29,7 @@ type Mutation {
   signin(     email: String!,
               password: String!,
   ): User!
+  signout: SuccessMessage
 }
 
 type Query {
