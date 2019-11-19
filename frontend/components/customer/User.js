@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 import PropTypes from 'prop-types';
 
 const QUERY_SIGNEDIN_USER = gql`
-  query QUERY_SIGNEDIN_USER{
+  query {
     signedinuser {
       id
       email
@@ -13,7 +13,7 @@ const QUERY_SIGNEDIN_USER = gql`
   }
 `
 
-const User = ( props ) => (
+const User = props => (
   <Query { ...props } query={ QUERY_SIGNEDIN_USER } >
     {payload => props.children(payload)}
   </Query>

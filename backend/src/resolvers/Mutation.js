@@ -3,6 +3,8 @@ const jwt = require('jsonwebtoken');
 
 
 const Mutations = {
+
+//----------------------------ITEM MUTATIONS----------------------------
   async createItem(db, args, ctx, info) {
   //  Authentication check
   const item = await ctx.db.mutation.createItem(
@@ -42,6 +44,8 @@ const Mutations = {
     return ctx.db.mutation.deleteItem( { where }, info );
   },
 
+//----------------------------USER MUTATIONS---------------------------
+  
   async signup( db, args, ctx, info ){
     
     args.email = args.email.toLowerCase();// less issues
@@ -64,6 +68,25 @@ const Mutations = {
     });
     return user;
   },
+
+  async signin(db, { email, password }, ctx, info){
+    const user = await ctx.db.query.user({
+      where: { email }
+    }) 
+    if ( !user ) {
+      throw new Error( `It looks like we don't have an account for ${ email }`);
+    }
+    const valid = await bcrypt.compare( password, user.password );
+    if ( !valid ) {
+      throw new Error(`Hey, that's not the right password.`)
+    }
+    const token = jwt.sign( { userId: user.id }, process.env.APP_SECRET );
+    ctx.response.cookie('token', token, {
+      httpOnly:true,
+      maxAge: 1000*60*60*24*265,
+    })
+    return user;
+  }
 };
 
 module.exports = Mutations;

@@ -11,7 +11,7 @@ const Nav = () => (
       <a>Sell</a>
     </Link>
     <Link href="/cart/testing">
-      <a>Sell</a>
+      <a>Cart</a>
     </Link>
     <Link href="/signup">
       <a>Signup</a>
@@ -19,13 +19,13 @@ const Nav = () => (
     <Link href="/orders">
       <a>Orders</a>
     </Link>
-    <Link href="/me">
+    <Link href="/signedinuser">
       <a>Account</a>
     </Link>
     <User>
     {({ data: { signedinuser } }) => {
-        console.log(signedinuser);
-        if (signedinuser) return <p>{signedinuser.name}</p>;
+      console.log(signedinuser);
+        if (signedinuser) return <p>{signedinuser.name}</p>
         return null;
       }}
     </User>
