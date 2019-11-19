@@ -70,9 +70,7 @@ const Mutations = {
   },
 
   async signin(db, { email, password }, ctx, info){
-    const user = await ctx.db.query.user({
-      where: { email }
-    }) 
+    const user = await ctx.db.query.user({ where: { email } });
     if ( !user ) {
       throw new Error( `It looks like we don't have an account for ${ email }`);
     }
@@ -82,9 +80,9 @@ const Mutations = {
     }
     const token = jwt.sign( { userId: user.id }, process.env.APP_SECRET );
     ctx.response.cookie('token', token, {
-      httpOnly:true,
+      httpOnly: true,
       maxAge: 1000*60*60*24*265,
-    })
+    });
     return user;
   }
 };

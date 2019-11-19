@@ -1,6 +1,6 @@
 {
   "name": "sick-fits-backend",
-  "description": "the backend of sick fits",
+  "description": "the backend of gymcal",
   "scripts": {
     "start": "nodemon -e js,graphql -x node src/index.js",
     "dev": "nodemon -e js,graphql -x node --inspect src/index.js",
@@ -13,7 +13,7 @@
     "cookie-parser": "^1.4.3",
     "dotenv": "6.0.0",
     "graphql": "^0.13.2",
-    "graphql-cli": "^3.0.14",
+    "graphql-cli": "^2.16.7",
     "graphql-yoga": "1.17.4",
     "jsonwebtoken": "8.3.0",
     "nodemailer": "^4.6.8",
