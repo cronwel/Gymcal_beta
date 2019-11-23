@@ -6,8 +6,6 @@ const db = require('./db');
 
 const server = createServer();
 
-// this is where you get access to other stuff in MIDDLEWARE
-
 server.express.use(cookieParser());
 
 server.express.use((req, res, next ) => {
@@ -19,7 +17,6 @@ server.express.use((req, res, next ) => {
   next();
 });
 
-//without this other content will not show up on the screen, additional navigation
 server.express.use(async (req, res, next) => {
   if (!req.userId) return next();
   const user = await db.query.user(
@@ -31,13 +28,12 @@ server.express.use(async (req, res, next) => {
 });
 
 server.start(
-  // {
-  //   cors: {
-  //     credentials: true,
-  //     origin: process.env.FRONTEND_URL,
-      
-  //   },
-  // },
+  {
+    cors: {
+      credentials: true,
+      origin: process.env.FRONTEND_URL,
+    },
+  },
   deets => {
     console.log(`Server is now running on port http:/localhost:${ deets.port }`);
   }
