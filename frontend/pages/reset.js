@@ -1,11 +1,11 @@
-import ResetPage from '../components/customer/ResetPage';
+import ResetConfirm from '../components/customer/ResetConfirm';
 
-const Sell = (props) => (
+const Reset = (props) => (
   <div>
     <p>
-      Reset your Password { props.query.resetToken }
+      Reset your Password
     </p>
-      <ResetPage resetToken={ props.query.resetToken } />
+      <ResetConfirm resetToken={ props.query.resetToken } />
   </div>
 )
-export default Sell;
+export default Reset;

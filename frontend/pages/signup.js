@@ -1,6 +1,6 @@
 import Signup from '../components/customer/Signup';
 import Signin from '../components/customer/Signin';
-import Reset from '../components/customer/Reset';
+import ResetRequest from '../components/customer/ResetRequest';
 import styled from 'styled-components';
 
 const Columns = styled.div`
@@ -14,7 +14,7 @@ const SignupPage = ( props ) => (
   <Columns>
     <Signup />
     <Signin />
-    <Reset /> 
+    <ResetRequest /> 
   </Columns>
 )
 export default SignupPage;

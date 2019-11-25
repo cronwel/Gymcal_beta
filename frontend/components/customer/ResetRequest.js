@@ -6,7 +6,7 @@ import DisplayError from '../ErrorMessage';
 
 const MUTATION_RESET_REQUEST = gql`
  mutation MUTATION_RESET_REQUEST( $email: String! ) {
-     requestReset( 
+     resetRequest( 
          email: $email
      ) {
        message
@@ -31,12 +31,12 @@ class ResetRequest extends Component {
         mutation={ MUTATION_RESET_REQUEST }
         variables={ this.state }
       >
-        { ( reset, { error, loading, called  } ) => (
+        { ( resetRequest, { error, loading, called  } ) => (
           <Form
             method="post"
             onSubmit={ async e => {
               e.preventDefault();
-              const success = await reset();
+              const success = await resetRequest();
               this.setState( { email: '' } );
             }}
           >

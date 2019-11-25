@@ -78,20 +78,23 @@ const Mutations = {
     ctx.response.clearCookie( 'token' );
     return { message: 'See you later!'};
   },
-  async requestReset(db, args, ctx, info) {
+
+//----------------------------USER MUTATIONS PASSWORD RESET---------------------------
+
+  async resetRequest(db, args, ctx, info) {
     const user = await ctx.db.query.user({
       where: { email: args.email }
     })
     if( !user ) {
       throw new Error( `It looks like we don't have an account for ${ args.email }`);
     }
-    const resetToken = (await promisify(randomBytes)(20)).toString('hex');
+    const cryptoPromise = promisify(randomBytes);
+    const resetToken = (await cryptoPromise(20)).toString('hex');
     const resetTokenExpiry = Date.now() + 3600000;
     const res = await ctx.db.mutation.updateUser({
       where: { email: args.email },
-      data: { resetToken: resetToken, resetTokenExpiry: resetTokenExpiry }
+      data: { resetToken, resetTokenExpiry }
     });
-    console.log(res);
     const mailResponse = await transport.sendMail(
       {
         from: 'noelirias@gmail.com',
@@ -106,7 +109,7 @@ const Mutations = {
       })
     return { message: 'Thanks' };
   },
-  async resetPassword( db, args, ctx, info ) {
+  async resetConfirm( db, args, ctx, info ) {
     if( args.password !== args.confirmPassword ){
       throw new Error( "Passwords don't match sausage fingers");
     }
@@ -135,10 +138,6 @@ const Mutations = {
     });
     return updatedUser;
   },
-//----------------------------USER MUTATIONS PASSWORD RESET---------------------------
-
-
-
 };
 
 module.exports = Mutations;

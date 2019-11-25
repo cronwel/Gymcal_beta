@@ -30,8 +30,8 @@ type Mutation {
               password: String!,
   ): User!
   signout: SuccessMessage
-  requestReset( email: String!): SuccessMessage
-  resetPassword(  resetToken: String!,
+  resetRequest( email: String!): SuccessMessage
+  resetConfirm(  resetToken: String!,
                   password: String!,
                   confirmPassword: String!
   ): User!
