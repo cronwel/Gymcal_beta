@@ -1,13 +1,16 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const { randomBytes } = require('crypto');
+const { promisify } = require('util');
+const { transport, mailer } = require('../mail/mail01_passwordReset');
+
 
 
 const Mutations = {
 
 //----------------------------ITEM MUTATIONS----------------------------
   async createItem(db, args, ctx, info) {
-  //  Authentication check
-  const item = await ctx.db.mutation.createItem(
+    const item = await ctx.db.mutation.createItem(
     {
       data: {
         ...args
@@ -17,17 +20,10 @@ const Mutations = {
   },
 
   updateItem(db, args, ctx, info) {
-    // it's a copy
     const updates = { ...args };
-
-    delete updates.id;//because id is returned, id cannot be updated
-    // you are referring to the item with the ID
-    // but it is not mutable
-    // since it's a copy, it's okay to remove id
+    delete updates.id;
     return ctx.db.mutation.updateItem({
-      // makes the necessary changes
       data: updates,
-      //puts back the id in reference to the object
       where: {
         id: args.id
       },
@@ -38,20 +34,15 @@ const Mutations = {
     const where = { 
       id: args.id
     };
-    // find
     const item = await ctx.db.query.item( { where } , `{ id, title }` );
-    //delete
     return ctx.db.mutation.deleteItem( { where }, info );
   },
 
 //----------------------------USER MUTATIONS---------------------------
   
   async signup( db, args, ctx, info ){
-    
-    args.email = args.email.toLowerCase();// less issues
-
-    const password = await bcrypt.hash( args.password, 10 ); // security layer 1
-
+    args.email = args.email.toLowerCase();
+    const password = await bcrypt.hash( args.password, 10 );
     const user = await ctx.db.mutation.createUser({
       data: {
         ...args,
@@ -59,9 +50,7 @@ const Mutations = {
         permissions: { set: [ 'USER' ] },
       }
     }, info );
-
     const token = jwt.sign( { userId: user.id } , process.env.APP_SECRET );
-
     ctx.response.cookie('token', token, {
       httpOnly: true,
       maxAge: 1000*60*60*24*365,
@@ -86,10 +75,70 @@ const Mutations = {
     return user;
   },
   signout(db, args, ctx, info) {
-    console.log(ctx.response);
     ctx.response.clearCookie( 'token' );
     return { message: 'See you later!'};
   },
+  async requestReset(db, args, ctx, info) {
+    const user = await ctx.db.query.user({
+      where: { email: args.email }
+    })
+    if( !user ) {
+      throw new Error( `It looks like we don't have an account for ${ args.email }`);
+    }
+    const resetToken = (await promisify(randomBytes)(20)).toString('hex');
+    const resetTokenExpiry = Date.now() + 3600000;
+    const res = await ctx.db.mutation.updateUser({
+      where: { email: args.email },
+      data: { resetToken: resetToken, resetTokenExpiry: resetTokenExpiry }
+    });
+    console.log(res);
+    const mailResponse = await transport.sendMail(
+      {
+        from: 'noelirias@gmail.com',
+        to: user.email,
+        subject: 'Password Reset',
+        html: mailer(`Your Password Reset Instructions
+        \n\n
+        <a href="${process.env.FRONTEND_URL}/reset?resetToken=${resetToken}">
+        Click Here
+        </a>`
+        )
+      })
+    return { message: 'Thanks' };
+  },
+  async resetPassword( db, args, ctx, info ) {
+    if( args.password !== args.confirmPassword ){
+      throw new Error( "Passwords don't match sausage fingers");
+    }
+    const [ user ] = await ctx.db.query.users({
+      where: {
+        resetToken: args.resetToken,
+        resetTokenExpiry_gte: Date.now() - 3600000,
+      }
+    });
+    if ( !user ) {
+      throw new Error( 'Too late, you need to reset your password again because you took too long!' );
+    }
+    const password = await bcrypt.hash( args.password, 10 );
+    const updatedUser = await ctx.db.mutation.updateUser( {
+      where: { email: user.email },
+      data: {
+        password,
+        resetToken: null,
+        resetTokenExpiry: null,
+      },
+    } );
+    const token = jwt.sign( { userId: updatedUser.id }, process.env.APP_SECRET );
+    ctx.response.cookie( 'token', token, {
+      httpOnly: true,
+      maxAge: 1000*60*60*24*365,
+    });
+    return updatedUser;
+  },
+//----------------------------USER MUTATIONS PASSWORD RESET---------------------------
+
+
+
 };
 
 module.exports = Mutations;

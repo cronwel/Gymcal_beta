@@ -9,27 +9,18 @@ const Nav = () => (
     const signedinuser = data ? data.signedinuser : null
     return (
     <NavStyles>
-      <Link href="/items">
-        <a>Items</a>
-      </Link>
+      
+      <Link href="/items"><a>Items</a></Link>
       {signedinuser && (
         <>
-        <Link href="/sell">
-          <a>Sell</a>
-        </Link>
-        <Link href="/orders">
-          <a>Orders</a>
-        </Link>
-        <Link href="/signedinuser">
-          <a>Account</a>
-        </Link>
+        <Link href="/sell"><a>Sell</a></Link>
+        <Link href="/orders"><a>Orders</a></Link>
+        <Link href="/signedinuser"><a>Account</a></Link>
         <Signout />
         </>
       )}
       {!signedinuser && (
-        <Link href="/signup">
-          <a>Signup</a>
-        </Link>
+        <Link href="/signup"><a>Signup</a></Link>
       )}
     </NavStyles>
       )
