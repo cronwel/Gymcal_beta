@@ -1,5 +1,5 @@
 #endpoint: ${env:PRISMA_ENDPOINT}
-endpoint: http://localhost:7777
+endpoint: https://us1.prisma.sh/cronwel-noel-irias-1f1e2a/backend/dev
 datamodel: datamodel.prisma
 secret: ${env:PRISMA_SECRET}
 hooks:

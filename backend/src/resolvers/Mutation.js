@@ -10,9 +10,19 @@ const Mutations = {
 
 //----------------------------ITEM MUTATIONS----------------------------
   async createItem(db, args, ctx, info) {
+    if( !ctx.request.userId ) {
+      throw new Error(
+        "Sorry, you need to be logged in to add items."
+      )
+    }
     const item = await ctx.db.mutation.createItem(
     {
       data: {
+        user: {
+          connect:  {
+            id: ctx.request.userId,
+          }
+        },
         ...args
       }
     }, info);

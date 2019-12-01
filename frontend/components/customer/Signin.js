@@ -18,7 +18,6 @@ const MUTATION_SIGNIN = gql`
  }
 `;
 
-
 class Signin extends Component {
 
   state = {
@@ -76,13 +75,11 @@ class Signin extends Component {
                 Sign In
               </button>
             </fieldset>
-
-
           </Form>
         )}
       </Mutation>              
     );
   }
-}
+};
 
 export default Signin;
