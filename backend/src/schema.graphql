@@ -4,7 +4,6 @@ type SuccessMessage {
 message: String
 }
 
-
 type Mutation {
   createItem( title: String,
               description: String,
@@ -35,6 +34,9 @@ type Mutation {
                   password: String!,
                   confirmPassword: String!
   ): User!
+  permissionsUpdate( permissions: [Permission],
+                     userId: ID!
+  ): User
 }
 
 type Query {
@@ -53,6 +55,8 @@ type Query {
   ): ItemConnection!
 
   signedinuser: User
+
+  users: [User]!
 }
 
 type User {

@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const { randomBytes } = require('crypto');
 const { promisify } = require('util');
 const { transport, mailer } = require('../mail/mail01_passwordReset');
-
+const { hasPermission } = require('../utilities/utilities');
 
 
 const Mutations = {
@@ -44,7 +44,15 @@ const Mutations = {
     const where = { 
       id: args.id
     };
-    const item = await ctx.db.query.item( { where } , `{ id, title }` );
+    const item = await ctx.db.query.item( { where } , `{ id, title user { id } }` );
+
+    const ownsItem = item.user.id === ctx.request.userId;
+    const hasPermissions = ctx.request.user.permissions.some(
+      permission => ['ADMIN', 'ITEMDELETE'].includes(permission)
+    );
+    if( !ownsItem && !hasPermissions ) {
+      throw new Error("Buckaroo, you can't do that!!");
+    }
     return ctx.db.mutation.deleteItem( { where }, info );
   },
 
@@ -148,6 +156,37 @@ const Mutations = {
     });
     return updatedUser;
   },
+//----------------------------USER MUTATIONS PERMISSIONS---------------------------
+
+  async permissionsUpdate( parent, args, ctx, info ) {
+    if (!ctx.request.userId ) {
+      throw new Error('You need to be logged in......Buckaroo!');
+    }
+    const currentUser = await ctx.db.query.user(
+      {
+        where: {
+          id: ctx.request.userId,
+        },
+      },
+      info
+    );
+    hasPermission( currentUser, ['ADMIN', 'PERMISSIONUPDATE' ] );
+
+    return ctx.db.mutation.updateUser(
+      {
+        data: {
+          permissions: {
+            set: args.permissions,
+          },
+        },
+        where: {
+          id: args.userId,
+        },
+      },
+      info
+    );
+  },
+
 };
 
 module.exports = Mutations;
