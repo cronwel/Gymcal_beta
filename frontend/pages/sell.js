@@ -1,4 +1,4 @@
-import ItemCreate from '../components/ItemCreate';
+import ItemCreate from '../components/inventory/ItemCreate';
 import Restrictions from '../components/customer/Restrictions';
 
 const Sell = (props) => (

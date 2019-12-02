@@ -1,22 +1,30 @@
 import Link from 'next/link';
+import { Mutation } from 'react-apollo';
+import { MUTATION_CART_TOGGLE } from './cart/Cart';
 import NavStyles from './styles/NavStyles';
 import User from './customer/User';
 import Signout from '../components/customer/Signout';
 
 const Nav = () => (
   <User>
-  { ( { data } ) => {
-    const signedinuser = data ? data.signedinuser : null
-    return (
+  { ( { data: { signedinuser } } ) => (
+
+
     <NavStyles>
       
       <Link href="/items"><a>Items</a></Link>
+
       {signedinuser && (
         <>
+
         <Link href="/sell"><a>Sell</a></Link>
+
         <Link href="/orders"><a>Orders</a></Link>
+
         <Link href="/signedinuser"><a>Account</a></Link>
+
         <Signout />
+
         </>
       )}
       {!signedinuser && (
@@ -24,7 +32,7 @@ const Nav = () => (
       )}
     </NavStyles>
       )
-    }}
+    }
   </User>
 );
 
