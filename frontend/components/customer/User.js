@@ -9,13 +9,24 @@ const QUERY_SIGNEDIN_USER = gql`
       email
       name
       permissions
+      cart {
+        id
+        quantity
+        item {
+          id
+          price
+          image
+          title
+          description
+        }
       }
+    }
   }
 `
 
 const User = props => (
   <Query { ...props } query={ QUERY_SIGNEDIN_USER } >
-    {payload => props.children(payload)}
+    { payload => props.children( payload ) }
   </Query>
 );
 
