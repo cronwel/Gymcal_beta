@@ -9,6 +9,10 @@ const { hasPermission } = require('../utilities/utilities');
 const Mutations = {
 
 //----------------------------ITEM MUTATIONS----------------------------
+//----------------------------ITEM MUTATIONS----------------------------
+//----------------------------ITEM MUTATIONS----------------------------
+//----------------------------ITEM MUTATIONS----------------------------
+
   async createItem(db, args, ctx, info) {
     if( !ctx.request.userId ) {
       throw new Error(
@@ -57,6 +61,9 @@ const Mutations = {
   },
 
 //----------------------------USER MUTATIONS---------------------------
+//----------------------------USER MUTATIONS---------------------------
+//----------------------------USER MUTATIONS---------------------------
+//----------------------------USER MUTATIONS---------------------------
   
   async signup( db, args, ctx, info ){
     args.email = args.email.toLowerCase();
@@ -97,6 +104,9 @@ const Mutations = {
     return { message: 'See you later!'};
   },
 
+//----------------------------USER MUTATIONS PASSWORD RESET---------------------------
+//----------------------------USER MUTATIONS PASSWORD RESET---------------------------
+//----------------------------USER MUTATIONS PASSWORD RESET---------------------------
 //----------------------------USER MUTATIONS PASSWORD RESET---------------------------
 
   async resetRequest(db, args, ctx, info) {
@@ -157,6 +167,9 @@ const Mutations = {
     return updatedUser;
   },
 //----------------------------USER MUTATIONS PERMISSIONS---------------------------
+//----------------------------USER MUTATIONS PERMISSIONS---------------------------
+//----------------------------USER MUTATIONS PERMISSIONS---------------------------
+//----------------------------USER MUTATIONS PERMISSIONS---------------------------
 
   async permissionsUpdate( parent, args, ctx, info ) {
     if (!ctx.request.userId ) {
@@ -186,6 +199,11 @@ const Mutations = {
       info
     );
   },
+//----------------------------CART MUTATIONS----------------------------------
+//----------------------------CART MUTATIONS----------------------------------
+//----------------------------CART MUTATIONS----------------------------------
+//----------------------------CART MUTATIONS----------------------------------
+
   async addToCart(db, args, ctx, info ) {
     const { userId } = ctx.request;
     if( !userId ) {

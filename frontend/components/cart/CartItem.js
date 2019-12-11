@@ -6,8 +6,8 @@ import RemoveFromCart from './RemoveFromCart';
 
 
 const CartItemStyles = styled.li`
-  paddig: 1rem 0;
-  border-bottom: 1px solid ${ props.theme.lightgrey };
+  padding: 1rem 0;
+  border-bottom: 1px solid ${ props => props.theme.lightgrey };
   display: grid;
   align-items: center;
   grid-template-columns: auto 1fr auto;
@@ -20,22 +20,34 @@ const CartItemStyles = styled.li`
   }
 `;
 
-const CartItem = ( { cartItem} ) => (
-  <CartItemStyles>
-    <img src={ cartItem.item.image } alt={ cartItem.item.title } />
-    <div className="cart-item-details">
-      <h3>{ cartItem.item.title }</h3>
-      <p>
-        {formatMoney(cartItem.item.price * cartItem.quantity ) }
-        { ' - '}
-        <em>
-          { cartItem.quantity } &times; { formatMoney(cartItem.item.price ) } each
-        </em>
-      </p>
-    </div>
-    <RemoveFromCart id={cartItem.id} />
-  </CartItemStyles>
-);
+const CartItem = ({ cartItem}) => {
+
+  if( !cartItem.item )
+    return (
+      <CartItemStyles>
+        <p>
+          Item removed
+        </p>
+        <RemoveFromCart id={ cartItem.id }/>
+      </CartItemStyles>
+    )
+  return (  
+    <CartItemStyles>
+      <img src={ cartItem.item.image } alt={ cartItem.item.title } width="100"/>
+      <div className="cart-item-details">
+        <h3>{ cartItem.item.title }</h3>
+        <p>
+          {formatMoney(cartItem.item.price * cartItem.quantity ) }
+          { ' - '}
+          <em>
+            {cartItem.quantity} &times; {formatMoney(cartItem.item.price)} each
+          </em>
+        </p>
+      </div>
+      <RemoveFromCart id={cartItem.id} />
+      </CartItemStyles>
+  )
+};
 
 CartItem.PropTypes = {
   cartItem: PropTypes.object.isRequired,

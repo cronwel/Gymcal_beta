@@ -6,12 +6,11 @@ import gql from 'graphql-tag';
 import { QUERY_SIGNEDIN_USER } from '../customer/User';
 
 const MUTATION_CART_REMOVE = gql`
-  mutation removeFromCart(
-    $id: ID!
-  ) {
-    removeFromCart(
-      id: $id
-    )
+  mutation removeFromCart( $id: ID!
+  ) {removeFromCart(id: $id
+    ) {
+      id
+    }
   }
 `;
 
@@ -20,12 +19,12 @@ const CartButton = styled.button`
   background: none;
   border: 0;
   &:hover {
-    color: ${ props.theme.red };
+    color: ${ props => props.theme.red };
     cursor: pointer;
   }
 `
 
-export default class RemoveFromCart extends Component {
+class RemoveFromCart extends Component {
 
   static propTypes = {
     id: PropTypes.string.isRequired,
@@ -37,7 +36,7 @@ export default class RemoveFromCart extends Component {
     data.signedinuser.cart = data.signedinuser.cart.filter(
       cartItem => cartItem.id !== cartItemId
     );
-    cache.writeQuery({ query: QUERY_SIGNEDIN_USER, data } );
+    cache.writeQuery({ query: QUERY_SIGNEDIN_USER, data });
   };
 
   render() {
@@ -54,11 +53,11 @@ export default class RemoveFromCart extends Component {
           },
         }}
       >
-        {( removeFromCart, { loading, error } ) => (
+        {( removeFromCart, { loading, error }) => (
           <CartButton
-            disabled={ loading }
-            onClick={ () => {
-              removeFromCart().catch(err => alert(err.message));
+            disabled={loading}
+            onClick={() => {
+              removeFromCart().catch( err => alert( err.message ) );
             }}
             title="Remove from Cart"
           >
@@ -71,3 +70,4 @@ export default class RemoveFromCart extends Component {
 }
 
 export default RemoveFromCart;
+export { MUTATION_CART_REMOVE };

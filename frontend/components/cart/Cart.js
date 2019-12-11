@@ -27,33 +27,25 @@ const MUTATION_CART_TOGGLE = gql`
 const Cart = () => (
 
   <User>
-    {({ data: { signedinuser } } ) => {
+    {({ data: { signedinuser }}) => {
       if( !signedinuser ) return null;
       return (        
         <Mutation mutation={ MUTATION_CART_TOGGLE } >
           { toggleCart => (
             <Query query={ QUERY_STATE_LOCAL }>
-              { ( { data } ) => (
+              {({ data }) => (
                 <CartStyles open={ data.cartOpen }>
                   <header>
-                    <CloseButton onClick={ toggleCart } title="close">
-                      &times;
-                    </CloseButton>
+                    <CloseButton onClick={ toggleCart } title="close">&times;</CloseButton>
                     <Supreme>{ signedinuser.name }'s Cart</Supreme>
                     <p>You have { signedinuser.cart.length } item{signedinuser.cart.length === 1 ? '': 's' } in your cart.</p>
-                  </header>
+                  </header>     
                     <ul>
-                      { signedinuser.cart.map(
-                        cartItem => <CartItem key={ cartItem.id } cartItem={ cartItem } />
-                      )}
+                      {signedinuser.cart.map(cartItem => <CartItem key={cartItem.id} cartItem={cartItem} />)}
                     </ul>
                   <footer>
-                    <p>
-                      { formatMoney( calcTotalPrice( signedinuser.cart ) ) }
-                    </p>
-                      <Button>
-                        Checkout
-                      </Button>
+                    <p>{formatMoney(calcTotalPrice( signedinuser.cart ))}</p>
+                    <Button>Checkout</Button>
                   </footer>
                 </CartStyles>
               )}
