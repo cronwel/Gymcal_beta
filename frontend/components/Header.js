@@ -4,7 +4,7 @@ import NProgress from 'nprogress';
 import Router from 'next/router';
 import Nav from './Nav';
 import Cart from './cart/Cart';
-
+import AutoComplete from './Search';
 Router.onRouteChangeStart = () => { NProgress.start(); };
 Router.onRouteChangeComplete = () => { NProgress.done(); };
 Router.onRouteChangeError = () => { NProgress.done(); };
@@ -57,6 +57,7 @@ const Header = () => (
       <Nav />
     </div>
     <div className="sub-bar">
+      <AutoComplete />
     </div>
     <Cart />
   </StyledHeader>
