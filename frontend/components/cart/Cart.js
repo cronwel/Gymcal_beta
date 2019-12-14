@@ -10,8 +10,11 @@ import Button from '../styles/Button';
 import CartItem from './CartItem';
 import calcTotalPrice from '../../lib/calcTotalPrice';
 import formatMoney from '../../lib/formatMoney';
+import Purchase from '../purchase/Purchase';
 import { QUERY_SIGNEDIN_USER } from '../customer/User';
 import { sign } from 'crypto';
+
+
 
 const QUERY_STATE_LOCAL = gql`
   query {
@@ -51,7 +54,11 @@ const Cart = () => (
           <ul>{signedinuser.cart.map(cartItem => <CartItem key={cartItem.id} cartItem={cartItem} />)}</ul>
           <footer>
             <p>{formatMoney(calcTotalPrice(signedinuser.cart))}</p>
-            <Button>Checkout</Button>
+            {signedinuser.cart.length && (
+              <Purchase>
+                <Button>Checkout</Button>
+            </Purchase>
+            )}
           </footer>
         </CartStyles>
       );

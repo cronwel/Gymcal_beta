@@ -30,37 +30,39 @@ type Mutation {
   ): User!
   signout: SuccessMessage
   resetRequest( email: String!): SuccessMessage
-  resetConfirm(  resetToken: String!,
-                  password: String!,
-                  confirmPassword: String!
+  resetConfirm( resetToken: String!,
+                password: String!,
+                confirmPassword: String!
   ): User!
   permissionsUpdate( permissions: [Permission],
                      userId: ID!
   ): User
-  addToCart(      id: ID!
+  addToCart(
+    id: ID!
   ): CartItem
-  removeFromCart( id: ID!
+  removeFromCart(
+    id: ID!
   ): CartItem
+  createOrder(
+    token: String!
+  ): Order!
 }
 
 type Query {
-  
   items(  where: ItemWhereInput,
           orderBy: ItemOrderByInput,
           skip: Int,
           first: Int
   ): [Item]!
-  
   item(
     where: ItemWhereUniqueInput!
   ): Item
-
   itemsConnection(  where: ItemWhereInput
   ): ItemConnection!
-
   signedinuser: User
-
   users: [User]!
+  order(id: ID!): Order
+  orders(orderBy: OrderOrderByInput): [Order]!
 }
 
 type User {
@@ -69,4 +71,6 @@ type User {
   email: String!
   permissions: [Permission!]!
   cart: [CartItem!]!
+  orders: [OrderItem]
 }
+

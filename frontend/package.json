@@ -1,5 +1,5 @@
 {
-  "name": "sick-fits-frontend",
+  "name": "gymcal-frontend",
   "version": "1.0.0",
   "description": "Gymcal",
   "main": "index.js",
@@ -60,7 +60,7 @@
       "^.+\\.js?$": "babel-jest"
     }
   },
-  "//": "This is our babel config, I prefer this over a .babelrc file",
+  "//": "in lieu of babelrc",
   "babel": {
     "env": {
       "development": {
