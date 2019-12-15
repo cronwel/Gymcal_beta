@@ -26,8 +26,8 @@ const Inner = styled.div`
 
 injectGlobal`
   @font-face {
-    font-family: 'radnika_next';
-    src: url('/static/radnikanext-medium-webfont.woff2') format('woff2');
+    font-family: 'Rubik Mono One', sans-serif;
+    src: url('/static/RubikMonoOne-Regular.ttf') format('ttf');
     font-weight: normal;
     font-style: normal;
   }

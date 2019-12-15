@@ -28,7 +28,7 @@ const QUERY_USER_ORDERS = gql`
     }
 `;
 
-const orderUL = styled.ul`
+const OrderUL = styled.ul`
   display: grid;
   grid-gap: 4rem;
   grid-tempalte-columns: repeat(auto-fit, minmax(40%, 1fr));
@@ -45,7 +45,7 @@ class OrderList extends Component {
               <h2>
                 You have made { orders.length } orders
               </h2>
-              <orderUL>
+              <OrderUL>
                 { orders.map(order => (
                   <OrderItemStyles key={order.id}>
                     <Link href={{
@@ -76,7 +76,7 @@ class OrderList extends Component {
                     </Link>
                   </OrderItemStyles>
                 ))}
-              </orderUL>
+              </OrderUL>
             </div>
           );
         }}
