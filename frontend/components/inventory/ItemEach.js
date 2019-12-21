@@ -42,27 +42,27 @@ class ItemEach extends Component {
   render() {
     return (
       <Query query={ QUERY_SINGLE_ITEM } variables={ { id: this.props.id } }  > 
-            { ( { error, loading, data } ) => {
-              if( error ) return <Error error={error}/>;
-              if( loading ) return <p>Loading....</p>;
-              if( !data.item ) return <p> No item found for { this.props.id }</p>
+        { ( { error, loading, data } ) => {
+          if( error ) return <Error error={error}/>;
+          if( loading ) return <p>Loading....</p>;
+          if( !data.item ) return <p> No item found for { this.props.id }</p>
 
-              const item = data.item;
+          const item = data.item;
 
-              return <SingleItemStyles>
-                <Head>
-                  <title>
-                    Gymcal | { item.title }
-                    </title>
-                </Head>
-                <img src={ item.largeImage } alt={ item.description }/>
-                <div className="details">
-                  <h2>{ item.title }</h2>
-                  <p>{ item.price }</p>
-                  <p>{ item.description }</p>
-                </div>
-              </SingleItemStyles> 
-            }}
+          return <SingleItemStyles>
+            <Head>
+              <title>
+                Gymcal | { item.title }
+                </title>
+            </Head>
+            <img src={ item.largeImage } alt={ item.description }/>
+            <div className="details">
+              <h2>{ item.title }</h2>
+              <p>{ item.price }</p>
+              <p>{ item.description }</p>
+            </div>
+          </SingleItemStyles> 
+        }}
       </Query>
     );
   }

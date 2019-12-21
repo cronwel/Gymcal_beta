@@ -29,14 +29,11 @@ class Item extends Component {
         </PriceTag>
 
         <div className="buttonList">
-          <Link href={ { pathname: '/update', query: { id: item.id } } } >
-            <a>Edit ∆</a>
+          <Link href={{ pathname: '/update', query: { id: item.id }}} >
+            <a>Edit</a>
           </Link>
-          <button>View </button>
           <AddToCart id={ item.id } />
-          <ItemDelete id={ item.id }>
-            Delete
-          </ItemDelete>
+          <ItemDelete id={ item.id }> Delete </ItemDelete>
         </div>
       </ItemStyles>
   }

@@ -19,7 +19,7 @@ const CartButton = styled.button`
   background: none;
   border: 0;
   &:hover {
-    color: ${ props => props.theme.red };
+    color: ${ props => props.theme.blue };
     cursor: pointer;
   }
 `

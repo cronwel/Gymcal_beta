@@ -13,13 +13,11 @@ const NavStyles = styled.ul`
     align-items: center;
     position: relative;
     text-transform: uppercase;
-    font-weight: 900;
     font-size: 1em;
     background: none;
     border: 0;
     cursor: pointer;
     color: ${props => props.theme.black};
-    font-weight: 800;
     @media (max-width: 700px) {
       font-size: 10px;
       padding: 0 10px;
@@ -44,7 +42,7 @@ const NavStyles = styled.ul`
       transition: width 0.4s;
       transition-timing-function: cubic-bezier(1, -0.65, 0, 2.31);
       left: 50%;
-      margin-top: 2rem;
+      margin-top: 1rem;
     }
     &:hover,
     &:focus {
@@ -55,7 +53,7 @@ const NavStyles = styled.ul`
     }
   }
   @media (max-width: 1300px) {
-    border-top: 1px solid ${props => props.theme.lightgrey};
+    // border-top: 1px solid ${props => props.theme.lightgrey};
     width: 100%;
     justify-content: center;
     font-size: 1.5rem;

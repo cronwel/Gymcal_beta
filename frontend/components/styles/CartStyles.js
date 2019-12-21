@@ -31,7 +31,6 @@ const CartStyles = styled.div`
     grid-template-columns: auto auto;
     align-items: center;
     font-size: 3rem;
-    font-weight: 900;
     p {
       margin: 0;
     }

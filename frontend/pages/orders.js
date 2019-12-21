@@ -3,7 +3,7 @@ import OrderList from '../components/purchase/OrderList';
 const OrderPage = (props) => (
   <div>
     <Restrictions >
-    <OrderList />
+      <OrderList />
     </Restrictions>
   </div>
 );

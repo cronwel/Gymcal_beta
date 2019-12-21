@@ -1,11 +1,9 @@
-import Link from 'next/link';
 import styled from 'styled-components';
 import NProgress from 'nprogress';
 import Router from 'next/router';
 import Nav from './Nav';
 import Cart from './cart/Cart';
 import AutoComplete from './Search';
-import LogoMain from './LogoMain';
 
 
 
@@ -13,28 +11,7 @@ Router.onRouteChangeStart = () => { NProgress.start(); };
 Router.onRouteChangeComplete = () => { NProgress.done(); };
 Router.onRouteChangeError = () => { NProgress.done(); };
 
-const Logo = styled.h1`
-  font-size: 4rem;
-  margin-left: 2rem;
-  position: left;
-  z-index: 2;
-  a {
-    padding: 0.5rem 1rem;
-    background: ${props => props.theme.red};
-    color: white;
-    text-transform: uppercase;
-    text-decoration: none;
-  }
-  @media (max-width: 1300px) {
-    margin: 0;
-    text-align: center;
-  }
-`;
-
 const StyledHeader = styled.header`
-  .gymcal-link {
-    position: left;
-  }
   .bar {
     border-bottom: 10px solid ${props => props.theme.black};
     display: grid;
@@ -56,12 +33,6 @@ const StyledHeader = styled.header`
 const Header = () => (
   <StyledHeader>
     <div className="bar">
-      <Logo>
-        <LogoMain className="gymcal-logo"/>
-        {/* <Link href="/" className="gymcal-link">
-          <a>GymCal</a>
-        </Link> */}
-      </Logo>
       <Nav />
     </div>
     <div className="sub-bar">

@@ -9,7 +9,7 @@ const Item = styled.div`
   flex-direction: column;
   img {
     width: 100%;
-    height: 400px;
+    height: 320px;
     object-fit: cover;
   }
   p {
@@ -30,7 +30,7 @@ const Item = styled.div`
     & > * {
       background: white;
       border: 0;
-      font-family: 'radnika_next';
+      font-family: 'Ministry of Moron';
       font-size: 1rem;
       padding: 1rem;
     }

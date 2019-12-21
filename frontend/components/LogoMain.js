@@ -2,7 +2,6 @@ import React from 'react';
 
 
 
-
 const LogoMain = props => (
   <svg width={75} height={100} {...props} viewBox="0 0 250 200" >
     <defs>

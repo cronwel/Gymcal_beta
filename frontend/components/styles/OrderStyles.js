@@ -15,7 +15,6 @@ const OrderStyles = styled.div`
     span {
       padding: 1rem;
       &:first-child {
-        font-weight: 900;
         text-align: right;
       }
     }
