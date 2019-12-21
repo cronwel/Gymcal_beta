@@ -5,21 +5,13 @@ import withData from '../lib/withData';
 
 class MyApp extends App {
 
-  // Similiar to componentDidmount
   static async getInitialProps({ Component, ctx }) {
-  
     let pageProps = {};
-  
     if ( Component.getInitialProps ) {
-  
       pageProps = await Component.getInitialProps(ctx);
-  
     }
-    // query is available to every page
     pageProps.query = ctx.query;
-
     return { pageProps };
-  
   }
 
   render() {

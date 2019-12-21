@@ -20,7 +20,7 @@ class ItemDelete extends Component {
   
   update = ( cache, payload ) => {
     const data = cache.readQuery( { query: QUERY_ALL_ITEMS } );
-    console.log( data, payload );
+    // console.log( data, payload );
     data.items = data.items.filter( item => item.id !== payload.data.deleteItem.id );
     cache.writeQuery( { query: ALL_ITEMS_QUERY, data: data } );
   };

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Mutation, Query } from 'react-apollo';
 import gql from 'graphql-tag';
-import Form from './styles/Form';
-import ErrorMessage from './ErrorMessage';
+import Form from '../styles/Form';
+import ErrorMessage from '../ErrorMessage';
 import Router from 'next/router';
+
 
 
 const QUERY_ITEM_UPDATE= gql`

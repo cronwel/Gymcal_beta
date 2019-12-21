@@ -1,4 +1,4 @@
-import ItemUpdate from '../components/ItemUpdate';
+import ItemUpdate from '../../components/inventory/ItemUpdate';
 
 const Sell = ( { query } ) => (
 

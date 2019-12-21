@@ -3,8 +3,8 @@ import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import styled from 'styled-components';
 import Item from './Item';
-import Pagination from './Pagination';
-import { perPage } from '../config';
+import Pagination from '../Pagination';
+import { perPage } from '../../config';
 
 const QUERY_ALL_ITEMS = gql`
   query QUERY_ALL_ITEMS(
