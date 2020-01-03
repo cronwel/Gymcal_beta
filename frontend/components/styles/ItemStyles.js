@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const Item = styled.div`
+  font-family: 'Quicksand Light', sans-serif;
   background: white;
   border: 1px solid ${props => props.theme.offWhite};
   box-shadow: ${props => props.theme.bs};
@@ -30,7 +31,7 @@ const Item = styled.div`
     & > * {
       background: white;
       border: 0;
-      font-family: 'Ministry of Moron';
+      font-family: 'Quicksand', sans-serif;
       font-size: 1rem;
       padding: 1rem;
     }

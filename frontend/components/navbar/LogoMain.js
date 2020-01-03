@@ -1,9 +1,7 @@
 import React from 'react';
 
-
-
 const LogoMain = props => (
-  <svg width={75} height={100} {...props} viewBox="0 0 250 200" >
+  <svg width={60} height={60} {...props} viewBox="-40 0 250 200" >
     <defs>
       <filter
         x="-14.4%"
@@ -60,24 +58,6 @@ const LogoMain = props => (
         strokeWidth={8}
         strokeLinecap="square"
       />
-      <text
-        fontFamily="MinistryofMoron, Ministry of Moron"
-        fontSize={44}
-        fill="#24F1FF"
-      >
-        <tspan x={17.133} y={214}>
-          {'Cal'}
-        </tspan>
-      </text>
-      <text
-        fontFamily="MinistryofMoron, Ministry of Moron"
-        fontSize={40}
-        fill="#24F1FF"
-      >
-        <tspan x={18.719} y={34}>
-          {'Gym'}
-        </tspan>
-      </text>
     </g>
   </svg>
 )

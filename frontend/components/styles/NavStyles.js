@@ -1,24 +1,36 @@
 import styled from 'styled-components';
 
-const NavStyles = styled.ul`
-  margin: 0;
-  padding: 0;
+const NavStyles = styled.nav`
   display: flex;
-  justify-self: end;
   font-size: 2rem;
+  justify-content: start;
+  div {
+    position: inherit;
+  }
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+  li {
+    list-style: none;
+  }
   a,
   button {
-    padding: 1rem 3rem;
-    display: flex;
+    padding: 1rem 2rem;
     align-items: center;
     position: relative;
     text-transform: uppercase;
     font-size: 1em;
+    letter-spacing: 2px;
     background: none;
     border: 0;
     cursor: pointer;
     color: ${props => props.theme.black};
-    @media (max-width: 700px) {
+    @media (max-width: 320px) {
       font-size: 10px;
       padding: 0 10px;
     }
@@ -32,28 +44,13 @@ const NavStyles = styled.ul`
       top: 0;
       bottom: 0;
     }
-    &:after {
-      height: 2px;
-      background: red;
-      content: '';
-      width: 0;
-      position: absolute;
-      transform: translateX(-50%);
-      transition: width 0.4s;
-      transition-timing-function: cubic-bezier(1, -0.65, 0, 2.31);
-      left: 50%;
-      margin-top: 1rem;
-    }
-    &:hover,
-    &:focus {
-      outline: none;
-      &:after {
-        width: calc(100% - 60px);
-      }
-    }
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+     }
   }
-  @media (max-width: 1300px) {
-    // border-top: 1px solid ${props => props.theme.lightgrey};
+  @media (max-width: 1200px) {
     width: 100%;
     justify-content: center;
     font-size: 1.5rem;

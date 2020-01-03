@@ -4,6 +4,7 @@ import { Query } from 'react-apollo';
 import Error from '../ErrorMessage';
 import styled from 'styled-components';
 import Head from 'next/head';
+import formatMoney from '../../lib/formatMoney';
 
 
 
@@ -21,6 +22,7 @@ const SingleItemStyles = styled.div`
     object-fit: contain;
   }
   .details {
+    font-family: 'Quicksand Light';
     margin: 3rem;
     font-size: 2rem;
   }
@@ -58,7 +60,7 @@ class ItemEach extends Component {
             <img src={ item.largeImage } alt={ item.description }/>
             <div className="details">
               <h2>{ item.title }</h2>
-              <p>{ item.price }</p>
+              <p>{ formatMoney(item.price) }</p>
               <p>{ item.description }</p>
             </div>
           </SingleItemStyles> 
