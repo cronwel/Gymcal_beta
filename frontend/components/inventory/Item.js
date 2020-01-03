@@ -29,6 +29,7 @@ class Item extends Component {
         </PriceTag>
 
         <div className="buttonList">
+          
           <Link href={{ pathname: '/update', query: { id: item.id }}} >
             <a>Edit</a>
           </Link>
