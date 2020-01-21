@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="74px" height="52px" viewBox="0 0 74 52" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M7.17845436,8 C6.93251894,8 6.6886927,8.04535994 6.45921082,8.13380367 C5.42853905,8.53103091 4.91503079,9.68857176 5.31225803,10.7192435 L13.7911932,32.7192435 C14.0886149,33.4909532 14.8303494,34 15.6573896,34 L51.3422479,34 C52.1691446,34 52.9107815,33.4911273 53.208303,32.7196098 L61.6921977,10.7196098 C61.780734,10.4900221 61.8261426,10.2460674 61.8261426,10 C61.8261426,8.8954305 60.9307121,8 59.8261426,8 L7.17845436,8 Z" id="Rectangle" stroke="#979797" stroke-width="4"></path>
+        <text id="1" font-family="LuloCleanW01-OneBold" font-size="12" font-weight="bold" letter-spacing="1" fill="#000000">
+            <tspan x="29.262" y="24">1</tspan>
+        </text>
+        <circle id="Oval" stroke="#979797" stroke-width="4" cx="18.5" cy="44.5" r="5.5"></circle>
+        <circle id="Oval" stroke="#979797" stroke-width="4" cx="49.5" cy="44.5" r="5.5"></circle>
+        <rect id="Rectangle-2" stroke="#979797" stroke-width="4" fill="#D8D8D8" x="57" y="2" width="15" height="1"></rect>
+    </g>
+</svg>

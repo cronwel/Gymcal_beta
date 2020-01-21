@@ -27,16 +27,19 @@ const QUERY_ALL_ITEMS = gql`
 `;
 
 const Center = styled.div`
-  text-align: center;
+  /* text-align: center; */
 
 `;
 
 const ItemsList = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  grid-gap: 20px;
   max-width: ${ props => props.theme.maxWidth };
   margin: 0 auto;
+  .itemStyle {
+    width: 200px;
+  }
 `
 
 class Items extends Component {
@@ -55,7 +58,7 @@ class Items extends Component {
               if (error) return <p> Error: { error.message }</p>
               return <ItemsList  >
                 {data.items.map( (item)=>
-                  <Item item={item} key={item.id} />
+                  <Item item={item} key={item.id} className='itemStyle' />
                 )}
               </ItemsList>
             }}

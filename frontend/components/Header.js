@@ -12,8 +12,12 @@ Router.onRouteChangeComplete = () => { NProgress.done(); };
 Router.onRouteChangeError = () => { NProgress.done(); };
 
 const StyledHeader = styled.header`
+  background-color: grey;
+  position: fixed;
+  width: 100%;
+  z-index: 2;
   .bar {
-    border-bottom: 10px solid ${props => props.theme.black};
+    border-bottom: 2px solid ${props => props.theme.grey};
   }
   .sub-bar {
     border-bottom: 2px solid ${props => props.theme.black};

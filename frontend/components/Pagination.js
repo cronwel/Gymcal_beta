@@ -2,11 +2,9 @@ import React from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import Link from  'next/link';
-
 import PaginationStyles from './styles/PaginationStyles';
 import { perPage } from '../config';
 import Head from 'next/head';
-
 
 
 
@@ -19,7 +17,6 @@ const QUERY_PAGINATION = gql`
     }
   }
 `;
-
 
 const Pagination = ( props ) => (
   <Query query={ QUERY_PAGINATION } >
@@ -39,16 +36,25 @@ const Pagination = ( props ) => (
               pathname: 'items',
               query: { page: page -1 }
             }}>
-              <a className="prev" aria-disabled={ page <= 1 }> Prev </a>
-            
+              <div>
+              <i class="left">
+                <a className="prev" aria-disabled={ page <= 1 }></a>
+              </i>
+              </div>
+
             </Link>
-            <p> { page } of { pages }  </p>
+            <p>{ page } / { pages }</p>
             <p>{ count} Items</p>
             <Link prefetch href={{ 
               pathname: 'items',
               query: { page: page + 1 }
             }}>
-              <a className="prev" aria-disabled={ page >= pages }> Next </a>
+              <div>
+
+              <i class="right">
+                <a className="prev" aria-disabled={ page >= pages }>  </a>
+              </i>
+              </div>
             
             </Link>
           </PaginationStyles>

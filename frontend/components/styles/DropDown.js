@@ -8,9 +8,10 @@ const DropDown = styled.div`
 `;
 
 const DropDownItem = styled.div`
+  font-family: 'Quicksand Light', sans-serif;
   border-bottom: 1px solid ${props => props.theme.lightgrey};
   background: ${props => (props.highlighted ? '#f7f7f7' : 'white')};
-  padding: 1rem;
+  padding: 0.5rem;
   transition: all 0.2s;
   ${props => (props.highlighted ? 'padding-left: 2rem;' : null)};
   display: flex;

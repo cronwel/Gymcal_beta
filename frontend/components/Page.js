@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import styled, { ThemeProvider, injectGlobal } from 'styled-components';
 import Header from './Header';
 import Meta from './Meta';
+import Footer from './Footer';
+
 
 const theme = {
   blue: '#24F1FF',
@@ -14,12 +16,17 @@ const theme = {
 };
 
 const StyledPage = styled.div`
-  background: white;
   color: ${props => props.theme.black};
 `;
-
+const Space = styled.div`
+  max-width: ${props => props.theme.maxWidth};
+  margin: 0 auto;
+  padding: 2rem;
+  height: 100px;
+`;
 const Inner = styled.div`
   max-width: ${props => props.theme.maxWidth};
+  background-color: rgba(200,200,200, .5); 
   margin: 0 auto;
   padding: 2rem;
 `;
@@ -38,6 +45,9 @@ injectGlobal`
   *, *:before, *:after {
     box-sizing: inherit;
   }
+  .space {
+       height: 40px;
+     }
   body {
     padding: 0;
     margin: 0;
@@ -59,7 +69,9 @@ class Page extends Component {
         <StyledPage>
           <Meta />
           <Header />
+          <Space />
           <Inner>{this.props.children}</Inner>
+          <Footer />
         </StyledPage>
       </ThemeProvider>
     );

@@ -6,8 +6,8 @@ import styled from 'styled-components';
 const AnimationStyles = styled.span`
   position: relative;
   .count {
-    display: block;
-    position: relative;
+    display: inline-block;
+    position: inherit;
     transition: all .4s;
     backface-visibility: hidden;
   }
@@ -28,14 +28,14 @@ const AnimationStyles = styled.span`
 `;
 
 const Dot = styled.div`
-  background: ${ props => props.theme.blue };
+  position: absolute;
+  z-index: 2;
   color: white;
   border-radius: 50%;
   padding: 0.5rem;
   line-height: 2rem;
   min-width: 3rem;
   margin-left: 1rem;
-  font-weight: 100;
   font-feature-settings: 'tnum';
   font-variant-numeric: tabular-nums;
 `;

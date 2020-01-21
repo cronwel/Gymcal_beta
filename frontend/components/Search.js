@@ -20,7 +20,6 @@ const QUERY_SEARCH = gql`
      title
    }
  }
-
 `;
 
 function routeToItem(item) {

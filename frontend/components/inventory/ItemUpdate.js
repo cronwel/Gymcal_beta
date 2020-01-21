@@ -41,58 +41,37 @@ const MUTATION_ITEM_UPDATE = gql`
 `;
 
 class UpdateItem extends Component {
-
-  // state comes from referenced ID, not from local state
   state = {};
-
-
-handleChange = e => {
-
-  const { name, type, value } = e.target ;
-
-  const val = type == 'number' ? parseFloat(value) :  value ;
-
-  this.setState( { [name] : val } );
+  
+  handleChange = e => {
+    const { name, type, value } = e.target ;
+    const val = type == 'number' ? parseFloat(value) :  value ;
+    this.setState( { [name] : val } );
 };
 
 updateItem = async (e, updateItemMutation ) => {
-
   e.preventDefault();
-  
   const res = await updateItemMutation({
-  
     variables: { 
-  
       id: this.props.id,
-  
       ...this.state,
     }, 
   });
 };
 
-
-
   render() {
     return (
-
       <Query query= { QUERY_ITEM_UPDATE } variables= { { id: this.props.id } } >
-
           { ( { data, loading } ) => {
             if (loading) return <p> Loading........</p>;
             if (!data.item) return <p> No item found for {this.props.id}</p>;
             return (
-
       <Mutation mutation = { MUTATION_ITEM_UPDATE } variables = { this.state }>
-
         {(updateItem, { loading, error }) => (
-
           <Form onSubmit= { e => this.updateItem( e, updateItem ) }>
             <h2> Inventory - EDIT </h2>
-
             <ErrorMessage error= { error } />
-
             <fieldset disabled={ loading } aria-busy={ loading } >
-
               <label htmlFor="title" > Name of Item
                 <input 
                   id="title"
