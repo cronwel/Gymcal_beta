@@ -9,6 +9,8 @@ import LogoMain from './LogoMain';
 import styled from 'styled-components';
 import Hamburger from './Hamburger';
 import CartIcon from '../cart/CartIcon';
+import AutoComplete from '../Search';
+
 
 const Gymcal = styled.div`
   font-size: 3rem;
@@ -43,6 +45,9 @@ const Nav = () => (
           <Link href="/" className="gymcal-link"><a>GymCal</a></Link>
         </Gymcal>
       </div>
+      <div>
+        <AutoComplete />
+      </div>
       <ul>
       <li>
         <Link href="/items"><a>Items</a></Link>
@@ -55,21 +60,27 @@ const Nav = () => (
       </li>
       {signedinuser && (
         <>
+        
         <li>
           <Link href="/orders"><a>Orders</a></Link>
         </li>
-          {signedinuser.permissions.includes("ADMIN") && (
-          <li>
+        
+        {signedinuser.permissions.includes("ADMIN") && (
+        
+        <li>
           <Link href="/sell"><a>Sell</a></Link>  
-          </li>
-          )}
+        </li>
+        )}
+        
         <li>
           <Link href="/signedinuser"><a>Account</a></Link>
         </li>
+
         <li>
           <Signout />
         </li>
-  
+
+        <li>
         <Mutation mutation={ MUTATION_CART_TOGGLE}>
           { ( toggleCart ) => (
             <button onClick={ toggleCart }>
@@ -77,13 +88,11 @@ const Nav = () => (
               <CartCount count={ signedinuser.cart.reduce( (tally, cartItem) => tally + cartItem.quantity, 0 ) }>
               </CartCount>
               </Overlay>
-
-              <CartIcon >
-              </CartIcon>
-
+              <CartIcon />
             </button>
           ) }
         </Mutation>
+      </li>
         </>
       )}
       </ul>

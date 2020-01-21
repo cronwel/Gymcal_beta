@@ -15,6 +15,7 @@ const PaginationStyles = styled.div`
   border-width: 0 3px 3px 0;
   display: inline-block;
   padding: 3px;
+  box-shadow: 5px 5px 14px 0px rgba(50, 50, 50, 0.85);
 }
 .right {
   transform: rotate(-45deg);
@@ -24,8 +25,6 @@ const PaginationStyles = styled.div`
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
 }
-
-
   & > * {
     margin: 0;
     padding: 15px 30px;

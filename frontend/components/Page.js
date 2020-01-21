@@ -11,7 +11,7 @@ const theme = {
   grey: '#3A3A3A',
   lightgrey: '#E1E1E1',
   offWhite: '#EDEDED',
-  maxWidth: '1000px',
+  maxWidth: '90%',
   bs: '0 12px 24px 0 rgba(0, 0, 0, 0.09)',
 };
 
@@ -22,11 +22,12 @@ const Space = styled.div`
   max-width: ${props => props.theme.maxWidth};
   margin: 0 auto;
   padding: 2rem;
-  height: 100px;
+  height: 80px;
 `;
 const Inner = styled.div`
   max-width: ${props => props.theme.maxWidth};
   background-color: rgba(200,200,200, .5); 
+  box-shadow: 5px 5px 14px 0px rgba(50, 50, 50, 0.85);
   margin: 0 auto;
   padding: 2rem;
 `;

@@ -6,20 +6,22 @@ import styled from 'styled-components';
 import Head from 'next/head';
 import formatMoney from '../../lib/formatMoney';
 
-
-
 const SingleItemStyles = styled.div`
-  max-width: 1200px;
+  max-width: 90%;
   margin: 2rem auto;
-  box-shadow: ${ props => props.theme.bs };
+  box-shadow: 5px 5px 14px 0px rgba(50, 50, 50, 0.85);
   display: grid;
   grid-auto-columns: 1fr;
   grid-auto-flow: column;
   min-height: 800px;
   img {
+    margin: 10px;
     width: 100%;
     height: auto;
-    object-fit: contain;
+    /* object-fit: contain; */
+    border: 2px solid black;
+    box-shadow: 5px 5px 14px 0px rgba(50, 50, 50, 0.85);
+
   }
   .details {
     font-family: 'Quicksand Light';
@@ -48,9 +50,7 @@ class ItemEach extends Component {
           if( error ) return <Error error={error}/>;
           if( loading ) return <p>Loading....</p>;
           if( !data.item ) return <p> No item found for { this.props.id }</p>
-
           const item = data.item;
-
           return <SingleItemStyles>
             <Head>
               <title>

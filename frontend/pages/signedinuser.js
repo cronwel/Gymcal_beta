@@ -1,7 +1,7 @@
 const SignedInUser = (props) => (
     <div>
         <p> 
-            This is your information page
+            { this.props }
         </p>
     </div>
 )

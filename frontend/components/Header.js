@@ -3,7 +3,6 @@ import NProgress from 'nprogress';
 import Router from 'next/router';
 import Nav from './navbar/Nav';
 import Cart from './cart/Cart';
-import AutoComplete from './Search';
 
 
 
@@ -20,6 +19,7 @@ const StyledHeader = styled.header`
     border-bottom: 2px solid ${props => props.theme.grey};
   }
   .sub-bar {
+    border-radius: 25px;
     border-bottom: 2px solid ${props => props.theme.black};
   }
 `;
@@ -28,9 +28,6 @@ const Header = () => (
   <StyledHeader>
     <div className="bar">
       <Nav />
-    </div>
-    <div className="sub-bar">
-      <AutoComplete />
     </div>
     <Cart />
   </StyledHeader>

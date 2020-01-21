@@ -11,8 +11,10 @@ const Item = styled.div`
   flex-direction: column;
   img {
     width: 100%;
-    /* height: 250px; */
+    height: 250px;
     object-fit: cover;
+    box-shadow: 5px 5px 14px 0px rgba(50, 50, 50, 0.85);
+
   }
   /* p {
     font-size: 12px;
