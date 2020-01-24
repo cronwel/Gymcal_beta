@@ -1,9 +1,10 @@
-const SignedInUser = (props) => (
-    <div>
+const SignedInUser = () => {
+    return (
+        <div>
         <p> 
-            { this.props }
         </p>
     </div>
-)
+        )
+    }
 
 export default SignedInUser;

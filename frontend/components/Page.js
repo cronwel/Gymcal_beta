@@ -61,6 +61,7 @@ injectGlobal`
     color: ${theme.black};
   }
   button {  font-family: 'Ministry of Moron'; }
+
 `;
 
 class Page extends Component {
@@ -72,7 +73,9 @@ class Page extends Component {
           <Header />
           <Space />
           <Inner>{this.props.children}</Inner>
-          <Footer />
+          <div className='FooterBottom'>
+            <Footer />
+          </div>
         </StyledPage>
       </ThemeProvider>
     );

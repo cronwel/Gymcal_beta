@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 import NProgress from 'nprogress';
 import Router from 'next/router';
-import Nav from './navbar/Nav';
+import Nav from './nav/NavTop/Nav';
+import NavLeft from './nav/NavLeft/NavLeft';
 import Cart from './cart/Cart';
-
+import Hamburger from './nav/NavLeft/Hamburger';
 
 
 Router.onRouteChangeStart = () => { NProgress.start(); };
@@ -11,26 +12,45 @@ Router.onRouteChangeComplete = () => { NProgress.done(); };
 Router.onRouteChangeError = () => { NProgress.done(); };
 
 const StyledHeader = styled.header`
-  background-color: grey;
+  background-color: black;
+  height: 60px;
   position: fixed;
   width: 100%;
   z-index: 2;
   .bar {
     border-bottom: 2px solid ${props => props.theme.grey};
-  }
-  .sub-bar {
-    border-radius: 25px;
-    border-bottom: 2px solid ${props => props.theme.black};
+    background-color: black;
   }
 `;
 
-const Header = () => (
-  <StyledHeader>
-    <div className="bar">
-      <Nav />
-    </div>
-    <Cart />
-  </StyledHeader>
-);
+class Header extends React.Component {
+
+  state = {
+    navOpen: false,
+  }
+
+  toggleHandler = () => {
+    this.setState((prevState)=> {
+      return { navOpen: !prevState.navOpen }
+    });
+  }
+  
+  render() {
+    let navLeft;
+    if (this.state.navOpen) {
+      navLeft = <NavLeft />
+    }
+    return (
+      <StyledHeader>
+        <div className="bar">
+          <Hamburger toggle={this.toggleHandler} />
+          <Nav />
+          { navLeft }
+        </div>
+        <Cart />
+      </StyledHeader>
+    );
+  }
+}
 
 export default Header;

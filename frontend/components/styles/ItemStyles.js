@@ -2,16 +2,15 @@ import styled from 'styled-components';
 
 const Item = styled.div`
   width: 300px;
-  font-family: 'Quicksand Light', sans-serif;
+  font-family: 'Courier New', Courier, monospace;
   background: white;
-  border-radius: 25px 0px 0px 25px;
   border: 1px solid ${props => props.theme.offWhite};
   position: relative;
   display: flex;
   flex-direction: column;
   img {
     width: 100%;
-    height: 250px;
+    height: 270px;
     object-fit: cover;
     box-shadow: 5px 5px 14px 0px rgba(50, 50, 50, 0.85);
 

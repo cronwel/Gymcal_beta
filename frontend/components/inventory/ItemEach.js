@@ -5,28 +5,50 @@ import Error from '../ErrorMessage';
 import styled from 'styled-components';
 import Head from 'next/head';
 import formatMoney from '../../lib/formatMoney';
+import AddToCart from '../cart/AddToCart';
+
+
 
 const SingleItemStyles = styled.div`
   max-width: 90%;
   margin: 2rem auto;
+  background-color: #D3ECEE;
   box-shadow: 5px 5px 14px 0px rgba(50, 50, 50, 0.85);
-  display: grid;
+  display: grid; 
   grid-auto-columns: 1fr;
   grid-auto-flow: column;
+  @media (max-width: 1024px) {
+  display: flex;
+  flex-wrap: wrap;
   min-height: 800px;
-  img {
+
+  }
+  h2 {
+    font-family: 'Courier New', Courier, monospace;
+  }
+  .image img {
+    flex-grow: 1;
     margin: 10px;
     width: 100%;
     height: auto;
-    /* object-fit: contain; */
     border: 2px solid black;
     box-shadow: 5px 5px 14px 0px rgba(50, 50, 50, 0.85);
-
+    @media (max-width: 640px) {
+      width: 85%;
+      align-items: center;
+    }
   }
   .details {
-    font-family: 'Quicksand Light';
-    margin: 3rem;
-    font-size: 2rem;
+    flex-grow: 1;
+    padding: 10px;
+    font-family: 'Courier New';
+    margin-left: 1.5rem;
+    margin: 1.1rem;
+    font-size: 1.5rem;
+    @media (max-width: 1024px) {
+      width: 90%;
+      align-items: center;
+    }
   }
 `
 
@@ -51,16 +73,21 @@ class ItemEach extends Component {
           if( loading ) return <p>Loading....</p>;
           if( !data.item ) return <p> No item found for { this.props.id }</p>
           const item = data.item;
+
           return <SingleItemStyles>
             <Head>
               <title>
                 Gymcal | { item.title }
                 </title>
             </Head>
-            <img src={ item.largeImage } alt={ item.description }/>
+            <div className="image">
+              <img src={ item.largeImage } alt={ item.description }/>
+            </div>
             <div className="details">
               <h2>{ item.title }</h2>
               <p>{ formatMoney(item.price) }</p>
+              <AddToCart id={ item.id }/>
+              <p>Manufacturer: </p>
               <p>{ item.description }</p>
             </div>
           </SingleItemStyles> 

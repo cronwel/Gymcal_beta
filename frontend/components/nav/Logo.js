@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LogoMain = props => (
+const Logo = props => (
   <svg width={60} height={60} {...props} viewBox="-40 0 250 200" >
     <defs>
       <filter
@@ -62,4 +62,4 @@ const LogoMain = props => (
   </svg>
 )
 
-export default LogoMain;
+export default Logo;

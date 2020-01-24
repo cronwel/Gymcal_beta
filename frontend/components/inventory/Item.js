@@ -10,11 +10,6 @@ import AddToCart from '../cart/AddToCart';
 import User from '../customer/User';
 import styled from 'styled-components';
 
-const ItemStyle2 = styled.div`
-  
-
-`
-
 
 class Item extends Component {
   static propTypes = {
@@ -23,7 +18,9 @@ class Item extends Component {
   render() {
     const { item } = this.props;
       return <ItemStyles>
-        { item.image && <img src={ item.image } alt={ item.title }/> }
+          <Link href={ { pathname: '/item', query: { id: item.id } } } >
+            { item.image && <img src={ item.image } alt={ item.title }/> }
+          </Link>
         <ItemTitle>
           <Link href={ { pathname: '/item', query: { id: item.id } } } >
           <a> { item.title } </a>
@@ -37,7 +34,7 @@ class Item extends Component {
               <a>Edit</a>
             </Link> */}
             {/* <ItemDelete id={ item.id }> Delete </ItemDelete> */}
-            <AddToCart id={ item.id } />
+              <AddToCart id={ item.id } />
         </div>
       </ItemStyles>
   }

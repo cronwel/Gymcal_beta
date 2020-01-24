@@ -8,6 +8,7 @@ const FooterCSS = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  position:
   i {
     display: flex;
 
@@ -24,7 +25,7 @@ class Footer extends Component {
           </p>
           <i><a href="http://www.twitter.com">   <Twitter /></a></i>
           <i><a href="http://www.facebook.com">  <Facebook /></a></i>
-          <i><a href="http://www.instagram.com"> <Instagram /></a></i>
+          <i><a href="http://www.instagram.com/gymcal.official"> <Instagram /></a></i>
           
         </FooterCSS>
       </footer>
