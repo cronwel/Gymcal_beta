@@ -35,7 +35,6 @@ const ItemsList = styled.div`
   display: flex;
   flex-wrap: wrap;
   grid-gap: 20px;
-  max-width: ${ props => props.theme.maxWidth };
   margin: 0 auto;
   .itemStyle {
     width: 200px;

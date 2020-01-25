@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const Title = styled.h3`
+  position: absolute;
   width: 100%;
   margin: 0;
   text-align: center;

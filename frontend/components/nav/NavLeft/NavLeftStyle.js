@@ -5,12 +5,13 @@ const MenuStyle = styled.nav`
   align-items: center;
   background-color: rgba(0,0,0, .8);
   height: 100vh;
-  width: 75%;
+  width: 320px;
   font-size: 1.5rem;  
   text-align: left;
   position: absolute;
   flex-direction: column;
   justify-content: flex-start;
+
   ul {
     align-items: flex-start;
     display: flex;
