@@ -13,7 +13,7 @@ server.express.use((req, res, next ) => {
   if( token ) {
     const { userId } = jwt.verify( token, process.env.APP_SECRET );
     req.userId = userId;
-  },
+  }
   res.header("Access-Control-Allow-Origin", "http://gymcal.com");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
