@@ -32,30 +32,21 @@ const Pagination = ( props ) => (
                 Gymcal | Page { page } of { pages }
               </title>
             </Head>
-            <Link prefetch href={{ 
-              pathname: 'items',
-              query: { page: page -1 }
-            }}>
+            <Link prefetch href={{ pathname: 'items', query: { page: page -1 }}}>
               <div>
-              <i class="left">
-                <a className="prev" aria-disabled={ page <= 1 }></a>
-              </i>
+                <i class="left">
+                  <a className="prev" aria-disabled={ page <= 1 }></a>
+                </i>
               </div>
-
             </Link>
             <p>{ page } / { pages }</p>
             <p>{ count} Items</p>
-            <Link prefetch href={{ 
-              pathname: 'items',
-              query: { page: page + 1 }
-            }}>
+            <Link prefetch href={{  pathname: 'items', query: { page: page + 1 }}}>
               <div>
-
-              <i class="right">
-                <a className="prev" aria-disabled={ page >= pages }>  </a>
-              </i>
+                <i class="right">
+                  <a className="prev" aria-disabled={ page >= pages }></a>
+                </i>
               </div>
-            
             </Link>
           </PaginationStyles>
         )

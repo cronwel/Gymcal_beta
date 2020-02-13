@@ -41,7 +41,7 @@ const Overlay = styled.div`
 
 const Nav = () => (
   <User>
-  {({ data: { signedinuser }}) => (
+  {({ data: {signedinuser }}) => (
     <>
     <MenuStyle>
       <LogoStyle> <Logo /> </LogoStyle>
@@ -79,7 +79,7 @@ const Nav = () => (
                   </Overlay>
                   <CartIcon />
                 </button>
-              ) }
+              )}
             </Mutation>
           </li>
             </>

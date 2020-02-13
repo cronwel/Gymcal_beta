@@ -11,7 +11,6 @@ const Item = styled.div`
     height: 270px;
     object-fit: cover;
     box-shadow: 5px 5px 14px 0px rgba(50, 50, 50, 0.85);
-
   }
   .buttonList {
     display: grid;

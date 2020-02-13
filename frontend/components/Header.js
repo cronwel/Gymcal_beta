@@ -24,11 +24,9 @@ const StyledHeader = styled.header`
 `;
 
 class Header extends React.Component {
-
   state = {
     navOpen: false,
   }
-
   toggleHandler = () => {
     this.setState((prevState)=> {
       return { navOpen: !prevState.navOpen }
